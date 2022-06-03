@@ -85,6 +85,8 @@ public class CustomBookingFoodAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    //https://github.com/sonusurender/List_RadioButton_Demo/blob/83de0c0936b105264132816a11524bdb762af412/app/src/main/java/com/listradiobutton_demo/adapter/GridListAdapter.java#L20
+
     public Food getSelectedItem() {
         if (selectedFood != -1) {
             return foodList.get(selectedFood);
