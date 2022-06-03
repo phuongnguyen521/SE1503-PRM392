@@ -10,6 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SE1503PRM392">
         <activity
+            android:name=".Slot9PassingData.IntentExplicitSecondActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Slot10CustomizedAdapter.TraiCayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lab04.DrinkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lab04.FoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Slot9PassingData.IntentExplicitFirstActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Slot12Activity.SecondActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Slot12Activity.FirstActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListViewDemoSlot6"
+            android:exported="false" />
+        <activity
             android:name=".lab0301.SoccerActivity"
             android:exported="false" />
         <activity
@@ -19,7 +43,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ListViewDemoSlot6"
+            android:name=".lab04.BookingFoodActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +51,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioButton
+        android:id="@+id/rbFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="34dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFoodName"
+        android:layout_width="62dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="47dp"
+        android:text="TextView"
+        android:textColor="#656161"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/ivFoodImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivFoodImage"
+        android:layout_width="99dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintStart_toEndOf="@+id/rbFood"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>
