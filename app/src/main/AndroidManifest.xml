@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SE1503PRM392">
         <activity
+            android:name=".lab04.BookingFoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Slot13Bundle.SecondActivitySlot13"
+            android:exported="false" />
+        <activity
+            android:name=".Slot13Bundle.MainActivitySlot13"
+            android:exported="false" />
+        <activity
             android:name=".Slot9PassingData.IntentExplicitSecondActivity"
             android:exported="false" />
         <activity
@@ -43,7 +52,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".lab04.BookingFoodActivity"
+            android:name=".Slot13Bundle.ImplicitIconToURLActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
