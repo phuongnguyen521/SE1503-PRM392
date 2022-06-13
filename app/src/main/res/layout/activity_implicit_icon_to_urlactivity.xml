@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Slot13Bundle.ImplicitIconToURLActivity">
 
     <ImageView
         android:id="@+id/ivVnExpress"
-        android:layout_width="110dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="250dp"
+        android:layout_width="74dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="172dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vnexpress" />
@@ -20,11 +21,120 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="35dp"
-        android:text="Click the icon"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="80dp"
+        android:text="Implicit Activities"
+        android:textColor="#FF5722"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivVnExpress" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="8dp"
+        android:background="#FAED7A"
+        android:ems="10"
+        android:hint="0906XXXXXX"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:textColor="#7E7A7A"
+        app:layout_constraintStart_toEndOf="@+id/ivMessage"
+        app:layout_constraintTop_toBottomOf="@+id/tvSendTo" />
+
+    <ImageView
+        android:id="@+id/ivMessage"
+        android:layout_width="77dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="97dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivVnExpress"
+        app:srcCompat="@drawable/message" />
+
+    <TextView
+        android:id="@+id/tvContentMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="19dp"
+        android:text="Content"
+        android:textColor="#FFEB3B"
+        app:layout_constraintStart_toEndOf="@+id/ivMessage"
+        app:layout_constraintTop_toBottomOf="@+id/etPhone" />
+
+    <TextView
+        android:id="@+id/tvSendTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="70dp"
+        android:text="Send to"
+        android:textColor="#FFEB3B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/etContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="10dp"
+        android:background="#FAED7A"
+        android:ems="10"
+        android:hint="Hello there..."
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="#7E7A7A"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContentMsg" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="88dp"
+        android:text="Click left icon to VNExpress website"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/ivVnExpress"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/etPhoneTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:background="#96EDF8"
+        android:ems="10"
+        android:hint="0906XXXXXX"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/ivPhone"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhoneTo" />
+
+    <ImageView
+        android:id="@+id/ivPhone"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="104dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMessage"
+        app:srcCompat="@drawable/phone" />
+
+    <TextView
+        android:id="@+id/tvPhoneTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        android:text="Phone to"
+        android:textColor="#00BCD4"
+        app:layout_constraintStart_toEndOf="@+id/ivPhone"
+        app:layout_constraintTop_toBottomOf="@+id/etContent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

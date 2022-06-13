@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.se1503_prm392">
+    package="com.example.se1503_prm392" >
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -8,7 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SE1503PRM392">
+        android:theme="@style/Theme.SE1503PRM392" >
+        <activity
+            android:name=".Slot13Bundle.ImplicitIconToURLActivity"
+            android:exported="false" />
         <activity
             android:name=".lab04.BookingFoodActivity"
             android:exported="false" />
@@ -52,8 +58,11 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Slot13Bundle.ImplicitIconToURLActivity"
-            android:exported="true">
+            android:name=".lab0501.UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lab0502.Lab0502OperatingSystemActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
