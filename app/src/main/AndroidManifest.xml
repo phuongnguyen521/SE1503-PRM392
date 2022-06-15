@@ -13,15 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SE1503PRM392">
         <activity
-            android:name=".lab0603.ContextMenuActivityLab0603"
-            android:exported="false" />
-        <activity
-            android:name=".lab0602.PopupMenuActivityLab0602"
-            android:exported="false" />
-        <activity
-            android:name=".lab0601.MenuActivityLab0601"
-            android:exported="false" />
-        <activity
             android:name=".Slot13Bundle.ImplicitIconToURLActivity"
             android:exported="false" />
         <activity
@@ -70,7 +61,16 @@
             android:name=".lab0501.UserActivity"
             android:exported="false" />
         <activity
+            android:name=".lab0602.PopupMenuActivityLab0602"
+            android:exported="false" />
+        <activity
+            android:name=".lab0601.MenuActivityLab0601"
+            android:exported="false" />
+        <activity
             android:name=".lab0502.Lab0502OperatingSystemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lab0603.ContextMenuActivityLab0603"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

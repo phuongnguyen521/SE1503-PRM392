@@ -24,16 +24,17 @@ public class ContextMenuActivityLab0603 extends AppCompatActivity {
 
         btnContextMenu = findViewById(R.id.btnContextMenu);
         clScreen = findViewById(R.id.clScreen);
+
+        registerForContextMenu(btnContextMenu);
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.menu_context, menu);
 
-        menu.setHeaderTitle("Choose color");
-        menu.setHeaderIcon(R.drawable.ic_red_background);
-
-        super.onCreateContextMenu(menu, v, menuInfo);
+//        menu.setHeaderTitle("Choose color");
+//        menu.setHeaderIcon(R.drawable.ic_red_background);
     }
 
     @Override
