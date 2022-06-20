@@ -1,4 +1,4 @@
-package com.example.se1503_ichinsan_bookapplication.ui.dashboard;
+package com.example.se1503_ichinsan_bookapplication.ui.cart;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

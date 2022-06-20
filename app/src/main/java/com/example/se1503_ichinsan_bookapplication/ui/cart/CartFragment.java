@@ -1,4 +1,4 @@
-package com.example.se1503_ichinsan_bookapplication.ui.dashboard;
+package com.example.se1503_ichinsan_bookapplication.ui.cart;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
