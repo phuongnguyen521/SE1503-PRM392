@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_user"
-        android:name="com.example.se1503_ichinsan_bookapplication.ui.notifications.UserFragment"
+        android:name="com.example.se1503_ichinsan_bookapplication.ui.user.UserFragment"
         android:label="@string/title_user"
         tools:layout="@layout/fragment_user" />
 </navigation>

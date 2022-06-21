@@ -18,14 +18,14 @@ public class CartFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CartViewModel dashboardViewModel =
+        CartViewModel cartViewModel =
                 new ViewModelProvider(this).get(CartViewModel.class);
 
         binding = FragmentCartBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textCart;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //final TextView textView = binding.textCart;
+        //cartViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

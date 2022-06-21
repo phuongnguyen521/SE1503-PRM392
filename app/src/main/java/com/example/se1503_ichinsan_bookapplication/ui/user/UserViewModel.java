@@ -1,4 +1,4 @@
-package com.example.se1503_ichinsan_bookapplication.ui.notifications;
+package com.example.se1503_ichinsan_bookapplication.ui.user;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,7 +10,7 @@ public class UserViewModel extends ViewModel {
 
     public UserViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is user fragment");
+        //mText.setValue("This is user fragment");
     }
 
     public LiveData<String> getText() {
