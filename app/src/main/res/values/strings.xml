@@ -3,4 +3,5 @@
     <string name="title_home">Home</string>
     <string name="title_cart">Cart</string>
     <string name="title_user">User</string>
+    <string name="default_web_client_id_string" translatable="false">1019368190468-d8akp5mvdusin87p3ndtg5uhuj76l2ro.apps.googleusercontent.com</string>
 </resources>
