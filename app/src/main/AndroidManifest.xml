@@ -5,8 +5,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SE1503PRM392">
+        <activity
+            android:name=".lab0901.SQLiteActivityLab0901"
+            android:exported="false" />
+        <activity
+            android:name=".Lab07.PermissionLab07"
+            android:exported="false" />
         <activity
             android:name=".lab0603.ContextMenuActivityLab0603"
             android:exported="false" />
@@ -76,7 +81,7 @@
             android:name=".lab0502.Lab0502OperatingSystemActivity"
             android:exported="false" />
         <activity
-            android:name=".Lab07.PermissionLab07"
+            android:name=".lab0902.WorkActivityLab0902"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
