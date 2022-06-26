@@ -4,4 +4,37 @@
     <string name="title_cart">Cart</string>
     <string name="title_user">User</string>
     <string name="default_web_client_id_string" translatable="false">1019368190468-d8akp5mvdusin87p3ndtg5uhuj76l2ro.apps.googleusercontent.com</string>
+    <string name="transaction">Transaction</string>
+    <string name="notifications">Notifications</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="full_name">Full name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="profile">Profile</string>
+    <string name="quantity_xx">Quantity: XX</string>
+    <string name="total_money_xx">XXX.XXX VND</string>
+    <string name="title_your_profile">Your Profile</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="title_transaction">Transaction</string>
+    <string name="title_order_detail">Order Detail</string>
+    <string name="title_reciver">Receiver</string>
+    <string name="order_id">Order ID</string>
+    <string name="order_date">Order Date</string>
+    <string name="receiver">Receiver</string>
+    <string name="order_total">Total</string>
+    <string name="publisher_name">Publisher Name</string>
+    <string name="currency_vnd">VND</string>
+    <string name="currency_usd">$</string>
+    <string name="edit">Edit</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="unknown">Unknown</string>
+    <string name="default_avatar">https://upload.wikimedia.org/wikipedia/commons/c/cd/Portrait_Placeholder_Square.png</string>
+    <string name="getSpecificFragment">GetSpecificFragment</string>
+    <string name="getUserProfile">GetUserProfile</string>
+    <string name="getUserOrder">GetUserOrder</string>
+    <string name="getBookDetail">GetBookDetail</string>
 </resources>

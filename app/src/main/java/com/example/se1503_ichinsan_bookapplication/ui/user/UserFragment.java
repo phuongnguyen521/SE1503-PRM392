@@ -5,52 +5,58 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.se1503_ichinsan_bookapplication.MainActivity;
 import com.example.se1503_ichinsan_bookapplication.R;
-import com.example.se1503_ichinsan_bookapplication.SignOutActivity;
+import com.example.se1503_ichinsan_bookapplication.dto.Receiver;
+import com.example.se1503_ichinsan_bookapplication.ui.signin.SignInActivity;
 import com.example.se1503_ichinsan_bookapplication.databinding.FragmentUserBinding;
+import com.example.se1503_ichinsan_bookapplication.ui.user.profile.ProfileActivity;
+import com.example.se1503_ichinsan_bookapplication.ui.user.receiver.ReceiverActivity;
+import com.example.se1503_ichinsan_bookapplication.ui.user.transaction.TransactionActivity;
+import com.example.se1503_ichinsan_bookapplication.utils.CommonUtils;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 
 public class UserFragment extends Fragment {
 
     private FragmentUserBinding binding;
     private LinearLayout google_sign_in_button;
     private GoogleSignInClient client;
-
+    private Button btnProfile;
+    private Button btnTransaction;
+    private Button btnNotification  ;
+    private Button btnAlternative;
+    private Button btnAddress;
+    private TextView tvAccountFullName;
+    private ImageView ivAccountAvatar;
 
     @Override
     public void onStart() {
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null){
-            Intent intent = new Intent(getActivity(), SignOutActivity.class);
-            startActivity(intent);
+            btnAlternative.setText(getString(R.string.sign_out));
+            CommonUtils utils = new CommonUtils();
+            String urlImage = user.getPhotoUrl().toString().isEmpty() ? null : user.getPhotoUrl().toString();
+            CommonUtils.returnCircleAvatar(ivAccountAvatar, getContext(), urlImage);
+            tvAccountFullName.setText(user.getDisplayName());
         } else {
-            GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.default_web_client_id_string))
-                    .requestEmail()
-                    .build();
-            client = GoogleSignIn.getClient(getContext(), options);
-            google_sign_in_button.setOnClickListener(view -> {
-                Intent intent = client.getSignInIntent();
-                startActivityForResult(intent, 1234);
-            });
+            btnAlternative.setText(getString(R.string.sign_in));
+            String urlImage = null;
+            CommonUtils.returnCircleAvatar(ivAccountAvatar, getContext(), urlImage);
+            tvAccountFullName.setText(getString(R.string.unknown));
         }
     }
 
@@ -62,9 +68,49 @@ public class UserFragment extends Fragment {
         binding = FragmentUserBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         google_sign_in_button = root.findViewById(R.id.google_sign_in_button);
+        btnProfile = root.findViewById(R.id.btnProfile);
+        btnTransaction = root.findViewById(R.id.btnTransaction);
+        btnNotification = root.findViewById(R.id.btnNotification);
+        btnAlternative = root.findViewById(R.id.btnAlternative);
+        btnAddress = root.findViewById(R.id.btnAddress);
+        tvAccountFullName = root.findViewById(R.id.tvAccountFullName);
+        ivAccountAvatar = root.findViewById(R.id.ivAccountAvatar);
+
         onStart();
-        //final TextView textView = binding.textUser;
-        //userViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+        btnProfile.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), ProfileActivity.class);
+            startActivity(intent);
+        });
+        btnTransaction.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), TransactionActivity.class);
+            startActivity(intent);
+        });
+        btnNotification.setOnClickListener(view ->{
+
+        });
+        btnAddress.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), ReceiverActivity.class);
+            startActivity(intent);
+        });
+        btnAlternative.setOnClickListener(view -> {
+            if (btnAlternative.getText().equals(getString(R.string.sign_in))){
+                Intent intent = new Intent(getActivity(), SignInActivity.class);
+                startActivity(intent);
+            } else {
+                GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id_string))
+                        .requestEmail()
+                        .build();
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), options);
+                mAuth.signOut();
+                mGoogleSignInClient.signOut();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra(getString(R.string.getSpecificFragment), getString(R.string.title_user));
+                startActivity(intent);
+            }
+        });
         return root;
     }
 
@@ -72,29 +118,5 @@ public class UserFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1234){
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-                FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(task1 -> {
-                    if (task.isSuccessful()){
-                        Intent intent = new Intent(getActivity(), SignOutActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
-
-            } catch (ApiException e) {
-                e.printStackTrace();
-            }
-
-        }
     }
 }

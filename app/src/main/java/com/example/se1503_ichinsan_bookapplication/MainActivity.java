@@ -6,10 +6,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
+import com.example.se1503_ichinsan_bookapplication.ui.cart.CartFragment;
 import com.example.se1503_ichinsan_bookapplication.ui.home.HomeFragment;
+import com.example.se1503_ichinsan_bookapplication.ui.user.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,6 +24,7 @@ import com.example.se1503_ichinsan_bookapplication.databinding.ActivityMainBindi
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private BottomNavigationView navView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, HomeFragment.class);
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -39,6 +44,30 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        setBookFragment();
+    }
+
+    private void setBookFragment(){
+        Intent i = getIntent();
+        String data = i.getStringExtra(getString(R.string.getSpecificFragment));
+
+        if (data != null) {
+            Fragment fragment = data.contentEquals(getString(R.string.title_home)) ? new HomeFragment()
+                    : data.contentEquals(getString(R.string.title_cart)) ?
+                    new CartFragment() : new UserFragment();
+            int index = data.contentEquals(getString(R.string.title_home)) ? R.id.navigation_home
+                    : data.contentEquals(getString(R.string.title_cart)) ?
+                    R.id.navigation_cart : R.id.navigation_user;
+            setFragment(fragment);
+            navView.setSelectedItemId(index);
+        }
+    }
+
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, fragment);
+        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null);
     }
 
 }

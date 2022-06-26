@@ -3,6 +3,7 @@
     package="com.example.se1503_ichinsan_bookapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SE1503_Ichinsan_BookApplication">
         <activity
-            android:name=".SignOutActivity"
+            android:name=".ui.user.receiver.ReceiverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.book.BookDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.order.OrderDetailPreviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.order.ReceiverPreviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.order.OrderDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.transaction.TransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.signup.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.profile.ProfileEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.signin.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

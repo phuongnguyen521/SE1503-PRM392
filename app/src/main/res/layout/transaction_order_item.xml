@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/transactionOrderItemconstraint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivBookOrder"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvOrderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="26dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/ivBookOrder"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOrderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="11dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/ivBookOrder"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrderId" />
+
+    <TextView
+        android:id="@+id/tvOrderQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/quantity_xx"
+        android:textColor="#7A7979"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/ivBookOrder"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrderName" />
+
+    <View
+        android:id="@+id/OrderDividerItem"
+        android:layout_width="1dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="28dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#7A7979"
+        app:layout_constraintEnd_toStartOf="@+id/tvOrderTotalMoney"
+        app:layout_constraintStart_toEndOf="@+id/tvOrderQuantity"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrderName" />
+
+    <TextView
+        android:id="@+id/tvOrderTotalMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/total_money_xx"
+        android:textColor="#7A7979"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/OrderDividerItem"
+        app:layout_constraintTop_toBottomOf="@+id/tvOrderName" />
+
+    <View
+        android:id="@+id/OrderDivider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="37dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#7A7979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBookOrder" />
+</androidx.constraintlayout.widget.ConstraintLayout>
