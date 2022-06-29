@@ -1,7 +1,5 @@
 package com.example.se1503_prm392.lab0902;
 
-import java.util.ArrayList;
-
 public class Work {
     private int Id;
     private String Name;

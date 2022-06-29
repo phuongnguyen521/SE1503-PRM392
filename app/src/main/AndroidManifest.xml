@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.SE1503PRM392">
+        <activity
+            android:name=".lab0902.WorkActivityLab0902"
+            android:exported="false" />
         <activity
             android:name=".lab0901.SQLiteActivityLab0901"
             android:exported="false" />
@@ -81,7 +86,7 @@
             android:name=".lab0502.Lab0502OperatingSystemActivity"
             android:exported="false" />
         <activity
-            android:name=".lab0902.WorkActivityLab0902"
+            android:name=".lab10.activity.TraineeActivityLab10"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
