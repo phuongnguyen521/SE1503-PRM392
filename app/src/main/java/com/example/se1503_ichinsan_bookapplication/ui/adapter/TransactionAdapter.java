@@ -15,11 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.se1503_ichinsan_bookapplication.R;
 import com.example.se1503_ichinsan_bookapplication.dto.Book;
+import com.example.se1503_ichinsan_bookapplication.dto.BookDetail;
 import com.example.se1503_ichinsan_bookapplication.dto.Order;
 import com.example.se1503_ichinsan_bookapplication.ui.order.OrderDetailActivity;
 import com.example.se1503_ichinsan_bookapplication.utils.CommonUtils;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder>{
@@ -54,8 +56,6 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         return orderList.size();
     }
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView ivBookOrder;
@@ -78,17 +78,20 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     }
 
     private void setOrder(ViewHolder holder, Order order){
-        holder.tvOrderId.setText(order.getId());
-        holder.tvOrderQuantity.setText(order.getQuantity());
-        holder.tvOrderTotalMoney.setText(order.getTotalMoney());
-
-        List<Book> bookList = order.getOrderDetai().getBookDetailList();
-        CommonUtils.returnRectangleAvatar(holder.ivBookOrder, mContext, bookList.get(0).getImage());
-        int size = bookList.size();
-        String title = bookList.get(0).getName();
-        if (size > 1){
-            title += "\nand " + (bookList.size() - 1) + " books";
+        String orderId = order.getOrderId();
+        if (orderId.length() > 1){
+            orderId = order.getOrderId().substring(0, 10) + "...";
         }
+        holder.tvOrderId.setText(holder.itemView.getContext().getString(R.string.order_id) + ": " + orderId);
+        holder.tvOrderQuantity.setText(order.getQuantity());
+        String totalMoney = CommonUtils.GetCurrencyFormat(order.getTotalMoney())
+                + " " + holder.itemView.getContext().getString(R.string.currency_vnd);
+        holder.tvOrderTotalMoney.setText(totalMoney);
+
+        List<BookDetail> bookDetailList = order.getOrderDetail().getBookDetails();
+        CommonUtils.returnRectangleAvatar(holder.ivBookOrder, mContext, bookDetailList.get(0).getImage());
+        int size = bookDetailList.size();
+        String title = bookDetailList.get(0).getName() + (size > 1 ? "\nand other books" : "");
         holder.tvOrderName.setText(title);
 
         holder.constraintLayout.setOnClickListener(view -> {

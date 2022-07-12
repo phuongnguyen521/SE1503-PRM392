@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_cart"
-        android:name="com.example.se1503_ichinsan_bookapplication.ui.cart.CartFragment"
-        android:label="@string/title_cart"
-        tools:layout="@layout/fragment_cart" />
-
-    <fragment
         android:id="@+id/navigation_user"
         android:name="com.example.se1503_ichinsan_bookapplication.ui.user.UserFragment"
         android:label="@string/title_user"

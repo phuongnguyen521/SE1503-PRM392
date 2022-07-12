@@ -12,18 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.se1503_ichinsan_bookapplication.R;
-import com.example.se1503_ichinsan_bookapplication.dto.Book;
+import com.example.se1503_ichinsan_bookapplication.dto.BookDetail;
 import com.example.se1503_ichinsan_bookapplication.dto.Order;
 import com.example.se1503_ichinsan_bookapplication.dto.OrderDetail;
 import com.example.se1503_ichinsan_bookapplication.dto.Publisher;
 import com.example.se1503_ichinsan_bookapplication.dto.PublisherTransaction;
-import com.example.se1503_ichinsan_bookapplication.dto.Receiver;
+import com.example.se1503_ichinsan_bookapplication.dto.ReceiverDetail;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.ViewHolder>{
@@ -40,20 +39,24 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderdetail_item, parent, false);
-        publisherTransactions = getPublisherTransaction(order.getOrderDetai());
+        publisherTransactions = getPublisherTransaction(order.getOrderDetail());
         return new ViewHolder(view);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        OrderDetail orderDetail = order.getOrderDetai();
-        Receiver receiver = orderDetail.getReceiverOrderDetail();
-        holder.tvOrderDetailID.setText(orderDetail.getId());
+        OrderDetail orderDetail = order.getOrderDetail();
+        ReceiverDetail receiver = orderDetail.getReceiverDetail();
+        String orderId = order.getOrderId();
+        if (orderId.length() > 1){
+            orderId = order.getOrderId().substring(0, 25) + "...";
+        }
+        holder.tvOrderID.setText(orderId);
         holder.tvOrderDetailDate.setText(orderDetail.getOrderDate());
         holder.tvOrderDetailReceiverName.setText(receiver.getName());
         holder.tvOrderDetailReceiverEmail.setText(receiver.getEmail());
-        holder.tvOrderDetailReceiverPhone.setText(receiver.getPhoneNumber());
+        holder.tvOrderDetailReceiverPhone.setText(receiver.getPhone());
         holder.tvOrderDetailReceiverAddress.setText(receiver.getAddress());
         holder.tvOrderDetailTotalContent.setText(order.getTotalMoney());
 
@@ -71,7 +74,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvOrderDetailID;
+        TextView tvOrderID;
         TextView tvOrderDetailDate;
         TextView tvOrderDetailReceiverName;
         TextView tvOrderDetailReceiverEmail;
@@ -82,7 +85,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvOrderDetailID = itemView.findViewById(R.id.tvOrderDetailID);
+            tvOrderID = itemView.findViewById(R.id.tvOrderID);
             tvOrderDetailDate = itemView.findViewById(R.id.tvOrderDetailDate);
             tvOrderDetailReceiverName = itemView.findViewById(R.id.tvOrderDetailReceiverName);
             tvOrderDetailReceiverEmail = itemView.findViewById(R.id.tvOrderDetailReceiverEmail);
@@ -99,7 +102,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         List<Publisher> publisherTemp = new ArrayList<>();
         final AtomicBoolean[] check = {new AtomicBoolean(false)};
 
-        orderDetail.getBookDetailList().forEach(book -> {
+        orderDetail.getBookDetails().forEach(book -> {
             if (publisherTemp.isEmpty()){
                 publisherTemp.add(book.getPublisher());
             } else {
@@ -111,10 +114,10 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         });
 
         if (publisherTemp.size() == 1){
-            publisher.add(new PublisherTransaction(publisherTemp.get(0), orderDetail.getBookDetailList()));
+            publisher.add(new PublisherTransaction(publisherTemp.get(0), orderDetail.getBookDetails()));
         } else {
             publisherTemp.forEach(p -> {
-                List<Book> bookList = orderDetail.getBookDetailList().stream().filter(book
+                List<BookDetail> bookList = orderDetail.getBookDetails().stream().filter(book
                         -> book.getPublisher().getName().equals(p.getName())).collect(Collectors.toList());
                 publisher.add(new PublisherTransaction(p, bookList));
             });

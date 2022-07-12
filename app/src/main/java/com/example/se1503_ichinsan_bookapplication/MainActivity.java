@@ -2,11 +2,7 @@ package com.example.se1503_ichinsan_bookapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.ListView;
 
-import com.bumptech.glide.Glide;
-import com.example.se1503_ichinsan_bookapplication.ui.cart.CartFragment;
 import com.example.se1503_ichinsan_bookapplication.ui.home.HomeFragment;
 import com.example.se1503_ichinsan_bookapplication.ui.user.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_cart, R.id.navigation_user)
+                R.id.navigation_home, R.id.navigation_user)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -52,12 +48,8 @@ public class MainActivity extends AppCompatActivity {
         String data = i.getStringExtra(getString(R.string.getSpecificFragment));
 
         if (data != null) {
-            Fragment fragment = data.contentEquals(getString(R.string.title_home)) ? new HomeFragment()
-                    : data.contentEquals(getString(R.string.title_cart)) ?
-                    new CartFragment() : new UserFragment();
-            int index = data.contentEquals(getString(R.string.title_home)) ? R.id.navigation_home
-                    : data.contentEquals(getString(R.string.title_cart)) ?
-                    R.id.navigation_cart : R.id.navigation_user;
+            Fragment fragment = data.contentEquals(getString(R.string.title_home)) ? new HomeFragment() : new UserFragment();
+            int index = data.contentEquals(getString(R.string.title_home)) ? R.id.navigation_home : R.id.navigation_user;
             setFragment(fragment);
             navView.setSelectedItemId(index);
         }
@@ -69,5 +61,4 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
         fragmentTransaction.addToBackStack(null);
     }
-
 }

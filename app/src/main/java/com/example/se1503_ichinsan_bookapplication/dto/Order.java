@@ -5,34 +5,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order implements Serializable {
-    private String id;
-    private String userID;
+    private String orderId;
+    private String userId;
     private String totalMoney;
     private String quantity;
-    private OrderDetail orderDetai;
+    private OrderDetail orderDetail;
 
     public Order() {
     }
 
-    public Order(String id, String userID, String totalMoney, String quantity) {
-        this.id = id;
-        this.userID = userID;
+    public Order(String orderId, String userID, String totalMoney, String quantity) {
+        this.orderId = orderId;
+        this.userId = userID;
         this.totalMoney = totalMoney;
         this.quantity = quantity;
     }
 
-    public Order(String id, String userID, String totalMoney, String quantity, OrderDetail orderDetai) {
-        this.id = id;
-        this.userID = userID;
+    public Order(String orderId, String userID, String totalMoney, String quantity, OrderDetail orderDetail) {
+        this.orderId = orderId;
+        this.userId = userID;
         this.totalMoney = totalMoney;
         this.quantity = quantity;
-        this.orderDetai = orderDetai;
+        this.orderDetail = orderDetail;
     }
 
     public static List<Order> getOrderList(){
         List<Order> orderList = new ArrayList<>();
         OrderDetail orderDetail = OrderDetail.getOrderDetail(1);
-        List<Book> bookList = orderDetail.getBookDetailList();
+        //List<Book> bookList = orderDetail.getBookDetailList();
+        List<Book> bookList = new ArrayList<>();
         int quantity = 0, totalMoney = 0;
         for (Book book : bookList) {
             quantity += book.getQuantity();
@@ -42,7 +43,8 @@ public class Order implements Serializable {
                 String.valueOf(quantity), orderDetail);
         orderList.add(order);
         orderDetail = OrderDetail.getOrderDetail(1);
-        bookList = orderDetail.getBookDetailList();
+        //bookList = orderDetail.getBookDetailList();
+        bookList = new ArrayList<>();
         quantity = 0;
         totalMoney = 0;
         for (Book book : bookList) {
@@ -55,43 +57,18 @@ public class Order implements Serializable {
         return orderList;
     }
 
-    public String getId() {
-        return id;
-    }
+    public String getOrderId() { return orderId; }
+    public void setOrderId(String value) { this.orderId = value; }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public String getUserId() { return userId; }
+    public void setUserId(String value) { this.userId = value; }
 
-    public String getUserID() {
-        return userID;
-    }
+    public String getTotalMoney() { return totalMoney; }
+    public void setTotalMoney(String value) { this.totalMoney = value; }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+    public String getQuantity() { return quantity; }
+    public void setQuantity(String value) { this.quantity = value; }
 
-    public String getTotalMoney() {
-        return totalMoney;
-    }
-
-    public void setTotalMoney(String totalMoney) {
-        this.totalMoney = totalMoney;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public OrderDetail getOrderDetai() {
-        return orderDetai;
-    }
-
-    public void setOrderDetai(OrderDetail orderDetai) {
-        this.orderDetai = orderDetai;
-    }
+    public OrderDetail getOrderDetail() { return orderDetail; }
+    public void setOrderDetail(OrderDetail value) { this.orderDetail = value; }
 }

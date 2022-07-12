@@ -1,31 +1,43 @@
 package com.example.se1503_ichinsan_bookapplication.dto;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Book implements Serializable {
+    private CategoryDto categoryDto;
     private String id;
     private String name;
-    private List<Category> categoryList;
+    private String supplier;
     private Publisher publisher;
-    private int quantity;
-    private int price;
+    private long quantity;
+    private long price;
     private String description;
     private String image;
+    private String language;
+    private String size;
+    private long page;
+    private long releaseYear;
+    private String createDate;
     private String status;
 
     public Book() {
     }
 
+    public Book(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Book(String id, String name,
-                List<Category> categoryList,
+                CategoryDto categoryDto,
                 Publisher publisher, int quantity,
                 int price, String description,
                 String image, String status) {
         this.id = id;
         this.name = name;
-        this.categoryList = categoryList;
+        this.categoryDto = categoryDto;
         this.publisher = publisher;
         this.quantity = quantity;
         this.price = price;
@@ -69,75 +81,48 @@ public class Book implements Serializable {
         return bookList;
     }
 
-    public String getId() {
-        return id;
-    }
+    public CategoryDto getCategoryDto() { return categoryDto; }
+    public void setCategoryDto(CategoryDto value) { this.categoryDto = value; }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public String getID() { return id; }
+    public void setID(String value) { this.id = value; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public void setName(String value) { this.name = value; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getSupplier() { return supplier; }
+    public void setSupplier(String value) { this.supplier = value; }
 
-    public List<Category> getCategoryList() {
-        return categoryList;
-    }
+    public Publisher getPublisher() { return publisher; }
+    public void setPublisher(Publisher value) { this.publisher = value; }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
-    }
+    public long getQuantity() { return quantity; }
+    public void setQuantity(long value) { this.quantity = value; }
 
-    public Publisher getPublisher() {
-        return publisher;
-    }
+    public long getPrice() { return price; }
+    public void setPrice(long value) { this.price = value; }
 
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String value) { this.description = value; }
 
-    public int getQuantity() {
-        return quantity;
-    }
+    public String getImage() { return image; }
+    public void setImage(String value) { this.image = value; }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    public String getLanguage() { return language; }
+    public void setLanguage(String value) { this.language = value; }
 
-    public int getPrice() {
-        return price;
-    }
+    public String getSize() { return size; }
+    public void setSize(String value) { this.size = value; }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+    public long getPage() { return page; }
+    public void setPage(long value) { this.page = value; }
 
-    public String getDescription() {
-        return description;
-    }
+    public long getReleaseYear() { return releaseYear; }
+    public void setReleaseYear(long value) { this.releaseYear = value; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getCreateDate() { return createDate; }
+    public void setCreateDate(String value) { this.createDate = value; }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String value) { this.status = value; }
 }

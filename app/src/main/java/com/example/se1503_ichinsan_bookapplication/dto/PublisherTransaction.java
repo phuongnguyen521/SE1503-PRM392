@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PublisherTransaction implements Serializable {
     private Publisher publisher;
-    private List<Book> bookList;
+    private List<BookDetail> bookList;
 
     public PublisherTransaction() {
     }
@@ -14,7 +14,7 @@ public class PublisherTransaction implements Serializable {
         this.publisher = publisher;
     }
 
-    public PublisherTransaction(Publisher publisher, List<Book> bookList) {
+    public PublisherTransaction(Publisher publisher, List<BookDetail> bookList) {
         this.publisher = publisher;
         this.bookList = bookList;
     }
@@ -27,11 +27,11 @@ public class PublisherTransaction implements Serializable {
         this.publisher = publisher;
     }
 
-    public List<Book> getBookList() {
+    public List<BookDetail> getBookList() {
         return bookList;
     }
 
-    public void setBookList(List<Book> bookList) {
+    public void setBookList(List<BookDetail> bookList) {
         this.bookList = bookList;
     }
 }

@@ -40,8 +40,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     private void setData(){
         Intent intent = getIntent();
         order = (Order) intent.getSerializableExtra(getString(R.string.getUserOrder));
-        ivOrderDetailBack = findViewById(R.id.ivOrderDetailBack);
-        rvOrderDetail = findViewById(R.id.rvOrderDetail);
+        ivOrderDetailBack = findViewById(R.id.ivOrderDetailPreviewBack);
+        rvOrderDetail = findViewById(R.id.rvOrderDetailPreview);
     }
 
     public OrderDetailActivity getActivity(){

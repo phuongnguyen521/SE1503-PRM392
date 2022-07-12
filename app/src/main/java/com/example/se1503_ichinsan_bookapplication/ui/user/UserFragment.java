@@ -2,6 +2,7 @@ package com.example.se1503_ichinsan_bookapplication.ui.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.se1503_ichinsan_bookapplication.MainActivity;
 import com.example.se1503_ichinsan_bookapplication.R;
+import com.example.se1503_ichinsan_bookapplication.dto.Cart;
 import com.example.se1503_ichinsan_bookapplication.dto.Receiver;
+import com.example.se1503_ichinsan_bookapplication.dto.User;
 import com.example.se1503_ichinsan_bookapplication.ui.signin.SignInActivity;
 import com.example.se1503_ichinsan_bookapplication.databinding.FragmentUserBinding;
 import com.example.se1503_ichinsan_bookapplication.ui.user.profile.ProfileActivity;
 import com.example.se1503_ichinsan_bookapplication.ui.user.receiver.ReceiverActivity;
 import com.example.se1503_ichinsan_bookapplication.ui.user.transaction.TransactionActivity;
 import com.example.se1503_ichinsan_bookapplication.utils.CommonUtils;
+import com.example.se1503_ichinsan_bookapplication.utils.dto.UserPreferenceUtils;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -41,23 +45,37 @@ public class UserFragment extends Fragment {
     private Button btnAddress;
     private TextView tvAccountFullName;
     private ImageView ivAccountAvatar;
+    private User userProfile;
+
+    private boolean isUserNotNull() {
+        return userProfile != null;
+    }
 
     @Override
     public void onStart() {
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userProfile = UserPreferenceUtils.getFromPreferences(getString(R.string.PreferenceUserProfile), getContext(), User.class);
         if (user != null){
             btnAlternative.setText(getString(R.string.sign_out));
-            CommonUtils utils = new CommonUtils();
             String urlImage = user.getPhotoUrl().toString().isEmpty() ? null : user.getPhotoUrl().toString();
             CommonUtils.returnCircleAvatar(ivAccountAvatar, getContext(), urlImage);
-            tvAccountFullName.setText(user.getDisplayName());
+            if (isUserNotNull()){
+                tvAccountFullName.setText(userProfile.getName());
+            } else {
+                Log.d("CGUP-UF","Cannot get user profile - User Fragment");
+                tvAccountFullName.setText(getString(R.string.unknown));
+            }
         } else {
             btnAlternative.setText(getString(R.string.sign_in));
             String urlImage = null;
             CommonUtils.returnCircleAvatar(ivAccountAvatar, getContext(), urlImage);
             tvAccountFullName.setText(getString(R.string.unknown));
         }
+        btnProfile.setEnabled(isUserNotNull());
+        btnAddress.setEnabled(isUserNotNull());
+        btnNotification.setEnabled(isUserNotNull());
+        btnTransaction.setEnabled(isUserNotNull());
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -106,6 +124,7 @@ public class UserFragment extends Fragment {
                 GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), options);
                 mAuth.signOut();
                 mGoogleSignInClient.signOut();
+                boolean temp = UserPreferenceUtils.removeObjectFromPreference(getString(R.string.PreferenceUserProfile), getContext());
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra(getString(R.string.getSpecificFragment), getString(R.string.title_user));
                 startActivity(intent);

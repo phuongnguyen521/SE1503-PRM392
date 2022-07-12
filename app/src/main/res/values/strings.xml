@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">SE1503_Ichinsan_BookApplication</string>
     <string name="title_home">Home</string>
-    <string name="title_cart">Cart</string>
+    <string name="search_page">Search</string>
+    <string name="title_cart">Your Cart</string>
+    <string name="bookDetailActivity">BookDetailActivity</string>
+    <string name="previousActivity">PreviousActivity</string>
     <string name="title_user">User</string>
+    <string name="cartToOrder">CartToOrder</string>
+    <string name="title_logo">Ichinsan</string>
+    <string name="label_search">Search</string>
+    <string name="search_keyword">searchKeyword</string>
     <string name="default_web_client_id_string" translatable="false">1019368190468-d8akp5mvdusin87p3ndtg5uhuj76l2ro.apps.googleusercontent.com</string>
     <string name="transaction">Transaction</string>
     <string name="notifications">Notifications</string>
@@ -19,7 +26,12 @@
     <string name="title_edit_profile">Edit Profile</string>
     <string name="title_transaction">Transaction</string>
     <string name="title_order_detail">Order Detail</string>
-    <string name="title_reciver">Receiver</string>
+    <string name="title_order_detail_preview">Preview</string>
+    <string name="label_select">Select</string>
+    <string name="label_check_out">Check Out</string>
+    <string name="title_receiver">Receiver</string>
+    <string name="title_edit_receiver_detail">Edit Receiver</string>
+    <string name="title_add_receiver_detail">Add Receiver</string>
     <string name="order_id">Order ID</string>
     <string name="order_date">Order Date</string>
     <string name="receiver">Receiver</string>
@@ -37,4 +49,28 @@
     <string name="getUserProfile">GetUserProfile</string>
     <string name="getUserOrder">GetUserOrder</string>
     <string name="getBookDetail">GetBookDetail</string>
+    <string name="preferenceCart">PreferenceCart</string>
+    <string name="preferenceBookDetail">PreferenceBookDetail</string>
+    <string name="PreferenceUserProfile">PreUserProfile</string>
+    <string name="userReceiverId">UserReceiverId</string>
+    <string name="userReceiverDetail">UserReceiverDetail</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="book_name">Book Name</string>
+    <string name="book_price">Book Price</string>
+    <string name="book_des">Description</string>
+    <string name="view_more">View More</string>
+    <string name="book_detail">Detail</string>
+    <string name="book_supplier">Supplier</string>
+    <string name="book_language">Language</string>
+    <string name="book_size">Size</string>
+    <string name="book_page">Page</string>
+    <string name="book_publisher">Publisher</string>
+    <string name="book_release_year">Release Year</string>
+    <string name="book_staus">Book Status</string>
+    <string name="book_add_to_cart">Add To Cart</string>
+    <string name="cart_purchase">Purchase</string>
+    <string name="cart_total">Total</string>
+    <string name="cart_info">Please choose a product</string>
+    <string name="cart_remove">Remove</string>
+    <string name="cart_number">1</string>
 </resources>

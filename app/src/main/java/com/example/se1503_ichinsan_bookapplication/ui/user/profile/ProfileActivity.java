@@ -12,6 +12,7 @@ import com.example.se1503_ichinsan_bookapplication.MainActivity;
 import com.example.se1503_ichinsan_bookapplication.R;
 import com.example.se1503_ichinsan_bookapplication.dto.User;
 import com.example.se1503_ichinsan_bookapplication.utils.CommonUtils;
+import com.example.se1503_ichinsan_bookapplication.utils.dto.UserPreferenceUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -27,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView tvAddressContent;
     private TextView tvFullnameProfile;
     private FirebaseUser user;
+    private User userProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         setData();
 
-        if (user == null){
+        if (user == null || userProfile == null){
             btnEditProfile.setEnabled(false);
             User profile = User.getUnknownUser(ProfileActivity.this);
             CommonUtils.returnCircleAvatar(ivProfileAvatar, ProfileActivity.this, null);
@@ -46,11 +48,13 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             btnEditProfile.setEnabled(true);
             CommonUtils.returnCircleAvatar(ivProfileAvatar, ProfileActivity.this, user.getPhotoUrl().toString());
-            tvFullnameProfile.setText(user.getDisplayName());
+            tvFullnameProfile.setText(userProfile.getName());
+            tvEmailContent.setText(userProfile.getEmail());
+            tvPhoneContent.setText(userProfile.getPhone());
+            tvAddressContent.setText(userProfile.getAddress());
             btnEditProfile.setOnClickListener(view -> {
                 User user = User.getUnknownUser(ProfileActivity.this);
                 Intent intent = new Intent(ProfileActivity.this, ProfileEditActivity.class);
-                intent.putExtra(getString(R.string.getUserProfile), (Serializable) user);
                 startActivity(intent);
             });
         }
@@ -66,6 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void setData(){
         user = FirebaseAuth.getInstance().getCurrentUser();
+        userProfile = UserPreferenceUtils.getFromPreferences(getString(R.string.PreferenceUserProfile), this.getApplicationContext(), User.class);
         ivProfileBack = findViewById(R.id.ivProfileBack);
         btnEditProfile = findViewById(R.id.btnEditProfile);
         ivProfileAvatar = findViewById(R.id.ivProfileAvatar);

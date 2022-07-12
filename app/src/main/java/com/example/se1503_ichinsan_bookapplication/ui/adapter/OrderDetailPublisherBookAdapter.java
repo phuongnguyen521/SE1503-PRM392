@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.se1503_ichinsan_bookapplication.R;
 import com.example.se1503_ichinsan_bookapplication.dto.Book;
+import com.example.se1503_ichinsan_bookapplication.dto.BookDetail;
 import com.example.se1503_ichinsan_bookapplication.ui.book.BookDetailActivity;
 import com.example.se1503_ichinsan_bookapplication.utils.CommonUtils;
 
@@ -20,9 +21,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public class OrderDetailPublisherBookAdapter extends RecyclerView.Adapter<OrderDetailPublisherBookAdapter.ViewHolder>{
-    private List<Book> bookList;
+    private List<BookDetail> bookList;
 
-    public OrderDetailPublisherBookAdapter(List<Book> bookList) {
+    public OrderDetailPublisherBookAdapter(List<BookDetail> bookList) {
         this.bookList = bookList;
     }
     @NonNull
@@ -34,12 +35,14 @@ public class OrderDetailPublisherBookAdapter extends RecyclerView.Adapter<OrderD
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Book book = bookList.get(position);
+        BookDetail book = bookList.get(position);
 
         CommonUtils.returnRectangleAvatar(holder.ivOrderDetailBookImage, holder.itemView.getContext(), book.getImage());
         holder.tvOrderDetailBookName.setText(book.getName());
         holder.tvOrderDetailBookQuantity.setText(String.valueOf(book.getQuantity()));
-        holder.tvOrderDetailBookPrice.setText(String.valueOf(book.getPrice()) + " " + holder.itemView.getContext().getString(R.string.currency_vnd));
+        String price = CommonUtils.GetCurrencyFormat(String.valueOf(book.getPrice()))
+                + " " + holder.itemView.getContext().getString(R.string.currency_vnd);
+        holder.tvOrderDetailBookPrice.setText(price);
         holder.orderDetailPublisherBookItemConstraint.setOnClickListener(view ->{
             Intent intent = new Intent(holder.itemView.getContext(), BookDetailActivity.class);
             intent.putExtra(holder.itemView.getContext().getString(R.string.getBookDetail), (Serializable) book);
