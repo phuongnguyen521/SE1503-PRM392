@@ -50,6 +50,7 @@ public class BookDetailActivity extends AppCompatActivity {
     private ImageView ivBookDetailBack;
     private ImageView ivBookDetailImage;
     private ImageView ivBookDetailCart;
+    private TextView tvBookDetailCategory;
     private TextView tvBookDetailBookName;
     private TextView tvBookDetailBookPrice;
     private Button btnAddToCart;
@@ -66,6 +67,7 @@ public class BookDetailActivity extends AppCompatActivity {
     }
 
     private void setData(){
+        tvBookDetailCategory = findViewById(R.id.tvBookDetailCategory);
         ivBookDetailBack = findViewById(R.id.ivBookDetailBack);
         ivBookDetailImage = findViewById(R.id.ivBookDetailImage);
         ivBookDetailCart = findViewById(R.id.ivBookDetailCart);
@@ -106,6 +108,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 addBookToCart();
             });
             CommonUtils.returnRectangleAvatar(ivBookDetailImage, this.getApplicationContext(), book.getImage());
+            tvBookDetailCategory.setText(book.getCategoryDto().getCategoryName());
             tvBookDetailBookName.setText(book.getName());
             String price = CommonUtils.GetCurrencyFormat(String.valueOf(book.getPrice())) + " " + getString(R.string.currency_vnd);
             tvBookDetailBookPrice.setText(price);

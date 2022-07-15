@@ -2,7 +2,9 @@ package com.example.se1503_ichinsan_bookapplication.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -92,12 +94,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         });
         holder.tvBookPriceCart.setText(price);
         holder.etQuantityCart.setText(cart.getQuantity());
-        holder.etQuantityCart.setFilters(new InputFilter[] {new InputFilterMinMax("1", "12")});
+        holder.etQuantityCart.setFilters(new InputFilter[] {new InputFilterMinMax("1", cart.getBookTotalQuantity())});
+        holder.etQuantityCart.setEnabled(false);
         holder.ivAddMoreBook.setOnClickListener(view -> {
-            updateCartItem(cart, holder.etQuantityCart, true);
+            updateCartItem(cart, holder.etQuantityCart, Integer.valueOf(cart.getBookTotalQuantity()), true);
         });
         holder.ivCartRemove.setOnClickListener(view -> {
-            updateCartItem(cart, holder.etQuantityCart, false);
+            updateCartItem(cart, holder.etQuantityCart, Integer.valueOf(cart.getBookTotalQuantity()), false);
         });
         holder.ivRemoveCartItem.setOnClickListener(view -> {
             deleteCartItem(cart);
@@ -128,34 +131,38 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
         });
     }
 
-    private void updateCartItem(CartItem cartItem, EditText etQuantityCart, boolean isAdded){
+    private void updateCartItem(CartItem cartItem, EditText etQuantityCart, int total, boolean isAdded){
         int quantity = isAdded ?
                 Integer.valueOf(etQuantityCart.getText().toString()) + 1 :
                 Integer.valueOf(etQuantityCart.getText().toString()) - 1;
-        cartItem.setQuantity(String.valueOf(quantity));
-        updateCartByUserId(cartItem, new CallBackData<CartItem, Response<CartItem>>() {
-            @Override
-            public void onGetMapData(Response<CartItem> response) {
-                if (response.isSuccessful() && response != null){
-                    Log.d("Update Cart",String.valueOf(response.body()));
-                    etQuantityCart.setText(String.valueOf(quantity));
-                    if (!selectedCartItemList.isEmpty()){
-                        int index = getPositionInSelectedList(cartItem.getBookId());
-                        if (index > -1){
-                            selectedCartItemList.set(index, cartItem);
-                            tvCartTotalMoney.setText(calculateTotalFromSelectedList());
+        if (total >= quantity && quantity > 0){
+            cartItem.setQuantity(String.valueOf(quantity));
+            updateCartByUserId(cartItem, new CallBackData<CartItem, Response<CartItem>>() {
+                @Override
+                public void onGetMapData(Response<CartItem> response) {
+                    if (response.isSuccessful() && response != null){
+                        Log.d("Update Cart",String.valueOf(response.body()));
+                        etQuantityCart.setText(String.valueOf(quantity));
+                        if (!selectedCartItemList.isEmpty()){
+                            int index = getPositionInSelectedList(cartItem.getBookId());
+                            if (index > -1){
+                                selectedCartItemList.set(index, cartItem);
+                                tvCartTotalMoney.setText(calculateTotalFromSelectedList());
+                            }
                         }
+                    } else {
+                        Log.d("Update Cart Failed",String.valueOf(response.body()));
                     }
-                } else {
-                    Log.d("Update Cart Failed",String.valueOf(response.body()));
                 }
-            }
 
-            @Override
-            public void onError() {
+                @Override
+                public void onError() {
 
-            }
-        });
+                }
+            });
+        } else {
+            Toast.makeText(context, "The minimum is 1 and the max of this book is " + total, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

@@ -82,6 +82,29 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:id="@+id/tvAuthorLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/book_author"
+                    android:textColor="#B5A7A7"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvAuthorContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="@string/book_author"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
                     android:id="@+id/tvSupplierBookLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

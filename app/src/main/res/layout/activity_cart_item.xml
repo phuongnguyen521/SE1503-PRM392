@@ -54,9 +54,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toEndOf="@+id/etQuantityCart"
-        app:layout_constraintTop_toBottomOf="@+id/tvBookNameCart"
+        app:layout_constraintTop_toBottomOf="@+id/tvBookPriceCart"
         app:srcCompat="@drawable/ic_baseline_remove_24" />
 
     <ImageView
@@ -89,11 +89,11 @@
         android:layout_width="409dp"
         android:layout_height="2dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="40dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivBookImageCart" />
+        app:layout_constraintTop_toBottomOf="@+id/ivAddMoreBook" />
 
     <ImageView
         android:id="@+id/ivRemoveCartItem"

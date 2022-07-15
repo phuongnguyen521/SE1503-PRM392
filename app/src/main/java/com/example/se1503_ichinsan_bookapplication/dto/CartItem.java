@@ -11,6 +11,7 @@ public class CartItem implements Serializable {
     private String quantity;
     private String price;
     private String statusId;
+    private String bookTotalQuantity;
     private Publisher publisher;
 
     public CartItem(long cartId, String bookName, String image, String quantity, String price, String statusId, Publisher publisher) {
@@ -33,8 +34,6 @@ public class CartItem implements Serializable {
         this.statusId = statusId;
         this.publisher = publisher;
     }
-
-
 
     public long getCartId() { return cartId; }
     public void setCartId(long value) { this.cartId = value; }
@@ -68,5 +67,13 @@ public class CartItem implements Serializable {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public String getBookTotalQuantity() {
+        return bookTotalQuantity;
+    }
+
+    public void setBookTotalQuantity(String bookTotalQuantity) {
+        this.bookTotalQuantity = bookTotalQuantity;
     }
 }

@@ -21,6 +21,7 @@ public class Book implements Serializable {
     private long releaseYear;
     private String createDate;
     private String status;
+    private String authorName;
 
     public Book() {
     }
@@ -34,7 +35,7 @@ public class Book implements Serializable {
                 CategoryDto categoryDto,
                 Publisher publisher, int quantity,
                 int price, String description,
-                String image, String status) {
+                String image, String status, String authorName) {
         this.id = id;
         this.name = name;
         this.categoryDto = categoryDto;
@@ -44,6 +45,7 @@ public class Book implements Serializable {
         this.description = description;
         this.image = image;
         this.status = status;
+        this.authorName = authorName;
     }
 
     public Book(String id, String name,
@@ -125,4 +127,20 @@ public class Book implements Serializable {
 
     public String getStatus() { return status; }
     public void setStatus(String value) { this.status = value; }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
 }

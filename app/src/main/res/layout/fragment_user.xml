@@ -55,18 +55,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ivAccountAvatar" />
 
     <Button
-        android:id="@+id/btnNotification"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round_btn"
-        android:text="@string/notifications"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTransaction" />
-
-    <Button
         android:id="@+id/btnAlternative"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -87,5 +75,5 @@
         android:background="@drawable/round_btn"
         android:text="@string/address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNotification" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTransaction" />
 </androidx.constraintlayout.widget.ConstraintLayout>

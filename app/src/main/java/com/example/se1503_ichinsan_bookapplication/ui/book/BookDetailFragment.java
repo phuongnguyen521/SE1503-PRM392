@@ -27,6 +27,7 @@ public class BookDetailFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Book book;
+    private TextView tvAuthorContent;
     private TextView tvBookDesContentDetail;
     private TextView tvSupplierBookContent;
     private TextView tvPublisherBookContent;
@@ -84,6 +85,7 @@ public class BookDetailFragment extends Fragment {
     }
 
     private void setData(){
+        tvAuthorContent = (TextView) getView().findViewById(R.id.tvAuthorContent);
         tvBookDesContentDetail = (TextView) getView().findViewById(R.id.tvBookDesContentDetail);
         btnBookDesViewMore = (Button) getView().findViewById(R.id.btnBookDesViewMore);
         tvSupplierBookContent = (TextView) getView().findViewById(R.id.tvSupplierBookContent);
@@ -104,6 +106,7 @@ public class BookDetailFragment extends Fragment {
             });
             int index = book.getDescription().indexOf(".");
             tvBookDesContentDetail.setText(book.getDescription().substring(0, index) + "...");
+            tvAuthorContent.setText(book.getAuthorName());
             tvSupplierBookContent.setText(book.getSupplier());
             tvPublisherBookContent.setText(book.getPublisher().getName());
             tvReleaseYearBookContent.setText(String.valueOf(book.getReleaseYear()));

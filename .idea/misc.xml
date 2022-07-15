@@ -15,9 +15,9 @@
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_add_receiver.xml" value="0.25416666666666665" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_book_description.xml" value="0.2" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_book_description2.xml" value="0.19067028985507245" />
-        <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_book_detail.xml" value="0.264" />
+        <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_book_detail.xml" value="0.176" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_cart.xml" value="0.176" />
-        <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_cart_item.xml" value="0.5121527777777778" />
+        <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_cart_item.xml" value="0.44232804232804235" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_edit_receiver.xml" value="0.264" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_edti_receiver.xml" value="0.24010416666666667" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_order_detail.xml" value="0.2" />
@@ -32,7 +32,7 @@
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_search.xml" value="0.264" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
-        <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/fragment_book_detail.xml" value="0.2" />
+        <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/fragment_book_detail.xml" value="0.264" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/fragment_cart.xml" value="0.264" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/PRM392/Book Project/SE1503_Ichinsan_BookApplication/app/src/main/res/layout/fragment_user.xml" value="0.25416666666666665" />

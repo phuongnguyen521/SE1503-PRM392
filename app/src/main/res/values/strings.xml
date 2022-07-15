@@ -55,6 +55,7 @@
     <string name="userReceiverId">UserReceiverId</string>
     <string name="userReceiverDetail">UserReceiverDetail</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="book_category">Book Category</string>
     <string name="book_name">Book Name</string>
     <string name="book_price">Book Price</string>
     <string name="book_des">Description</string>
@@ -64,6 +65,7 @@
     <string name="book_language">Language</string>
     <string name="book_size">Size</string>
     <string name="book_page">Page</string>
+    <string name="book_author">Author</string>
     <string name="book_publisher">Publisher</string>
     <string name="book_release_year">Release Year</string>
     <string name="book_staus">Book Status</string>

@@ -40,7 +40,6 @@ public class UserFragment extends Fragment {
     private GoogleSignInClient client;
     private Button btnProfile;
     private Button btnTransaction;
-    private Button btnNotification  ;
     private Button btnAlternative;
     private Button btnAddress;
     private TextView tvAccountFullName;
@@ -72,10 +71,7 @@ public class UserFragment extends Fragment {
             CommonUtils.returnCircleAvatar(ivAccountAvatar, getContext(), urlImage);
             tvAccountFullName.setText(getString(R.string.unknown));
         }
-        btnProfile.setEnabled(isUserNotNull());
-        btnAddress.setEnabled(isUserNotNull());
-        btnNotification.setEnabled(isUserNotNull());
-        btnTransaction.setEnabled(isUserNotNull());
+        setLayoutBasedOnAccount();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -88,7 +84,6 @@ public class UserFragment extends Fragment {
         google_sign_in_button = root.findViewById(R.id.google_sign_in_button);
         btnProfile = root.findViewById(R.id.btnProfile);
         btnTransaction = root.findViewById(R.id.btnTransaction);
-        btnNotification = root.findViewById(R.id.btnNotification);
         btnAlternative = root.findViewById(R.id.btnAlternative);
         btnAddress = root.findViewById(R.id.btnAddress);
         tvAccountFullName = root.findViewById(R.id.tvAccountFullName);
@@ -103,9 +98,6 @@ public class UserFragment extends Fragment {
         btnTransaction.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), TransactionActivity.class);
             startActivity(intent);
-        });
-        btnNotification.setOnClickListener(view ->{
-
         });
         btnAddress.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), ReceiverActivity.class);
@@ -137,5 +129,15 @@ public class UserFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void setLayoutBasedOnAccount(){
+        btnProfile.setEnabled(isUserNotNull());
+        btnAddress.setEnabled(isUserNotNull());
+        btnTransaction.setEnabled(isUserNotNull());
+        if (!isUserNotNull()){
+            btnAlternative.setX(0);
+            btnAlternative.setY(-250);
+        }
     }
 }

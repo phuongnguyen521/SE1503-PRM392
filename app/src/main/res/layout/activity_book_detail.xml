@@ -15,7 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutDetail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:layout_editor_absoluteY="56dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,11 +27,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivBookDetailImage">
 
                 <TextView
+                    android:id="@+id/tvBookDetailCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/book_category"
+                    android:textColor="#A44BBFF4"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
                     android:id="@+id/tvBookDetailBookName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="36dp"
                     android:text="@string/book_name"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -46,7 +59,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="7dp"
                     android:text="@string/book_price"
-                    android:textColor="#4CAF50"
+                    android:textColor="#43A047"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
