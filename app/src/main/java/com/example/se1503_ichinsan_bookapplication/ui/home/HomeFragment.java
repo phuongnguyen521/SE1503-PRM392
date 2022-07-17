@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -89,9 +90,10 @@ public class HomeFragment extends Fragment {
             public void onGetMapData(Response<List<Book>> response) {
                 if (response != null && response.isSuccessful()){
                     bookList = response.body();
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
                     BookAdapter bookAdapter = new BookAdapter(bookList, getContext(), getString(R.string.title_home), null);
                     rvHomeBookList.setAdapter(bookAdapter);
-                    rvHomeBookList.setLayoutManager(new LinearLayoutManager(getContext()));
+                    rvHomeBookList.setLayoutManager(gridLayoutManager);
                 }
             }
 

@@ -48,6 +48,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        getSupportActionBar().hide();
         google_sign_in_button = findViewById(R.id.google_sign_in_button);
         ivBackSignIn = findViewById(R.id.ivBackSignIn);
 

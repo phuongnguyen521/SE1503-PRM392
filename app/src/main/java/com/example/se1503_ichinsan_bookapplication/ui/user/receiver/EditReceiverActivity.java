@@ -43,6 +43,7 @@ public class EditReceiverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_receiver);
+        getSupportActionBar().hide();
         setData();
         boolean isSignedIn = CommonUtils.isSignedInYet(user, userProfile, this);
         setEnabledData(isSignedIn);

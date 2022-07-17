@@ -16,7 +16,9 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmailReceiverEdit" />
 
@@ -42,7 +44,9 @@
         android:ems="10"
         android:hint="@string/phone_number"
         android:inputType="number"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneReceiverEdit" />
 
@@ -69,7 +73,9 @@
         android:ems="10"
         android:hint="@string/address"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAddressReceiverEdit" />
 
@@ -132,7 +138,9 @@
         android:ems="10"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFullNameReceiverEdit" />
 
@@ -143,6 +151,8 @@
         android:layout_marginStart="158dp"
         android:layout_marginTop="20dp"
         android:text="@string/edit"
+        android:backgroundTint="@color/button_colors"
+        android:textColor="@color/edittext_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailReceiverEdit" />
 

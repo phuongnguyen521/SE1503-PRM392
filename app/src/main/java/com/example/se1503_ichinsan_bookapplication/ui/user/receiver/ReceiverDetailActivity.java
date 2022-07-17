@@ -45,6 +45,7 @@ public class ReceiverDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiver_detail);
+        getSupportActionBar().hide();
         setData();
         boolean isSignedIn = CommonUtils.isSignedInYet(user, userProfile, this);
         isEnabledData(isSignedIn);

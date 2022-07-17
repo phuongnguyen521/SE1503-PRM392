@@ -37,6 +37,8 @@
         android:layout_marginStart="161dp"
         android:layout_marginTop="21dp"
         android:text="@string/save"
+        android:backgroundTint="@color/button_colors"
+        android:textColor="@color/edittext_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAddressSignUp" />
 
@@ -49,7 +51,9 @@
         android:ems="10"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNameSignUpProfile" />
 
@@ -102,7 +106,9 @@
         android:hint="@string/address"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAddressSignUp" />
 
@@ -115,7 +121,9 @@
         android:ems="10"
         android:hint="@string/phone_number"
         android:inputType="number"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneSignUp" />
 

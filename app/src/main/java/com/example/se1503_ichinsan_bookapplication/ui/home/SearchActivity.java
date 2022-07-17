@@ -1,6 +1,7 @@
 package com.example.se1503_ichinsan_bookapplication.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,9 +68,10 @@ public class SearchActivity extends AppCompatActivity {
             public void onGetMapData(Response<List<Book>> response) {
                 if (response != null && response.isSuccessful()){
                     bookList = response.body();
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(SearchActivity.this, 2);
                     BookAdapter bookAdapter = new BookAdapter(bookList, SearchActivity.this, getString(R.string.search_page), searchKeywords);
                     rvSearchBookList.setAdapter(bookAdapter);
-                    rvSearchBookList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    rvSearchBookList.setLayoutManager(gridLayoutManager);
                 }
             }
 

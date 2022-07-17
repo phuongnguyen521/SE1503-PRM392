@@ -1,5 +1,6 @@
 package com.example.se1503_ichinsan_bookapplication.ui.adapter;
 
+import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.se1503_ichinsan_bookapplication.dto.OrderDetail;
 import com.example.se1503_ichinsan_bookapplication.dto.Publisher;
 import com.example.se1503_ichinsan_bookapplication.dto.PublisherTransaction;
 import com.example.se1503_ichinsan_bookapplication.dto.ReceiverDetail;
+import com.example.se1503_ichinsan_bookapplication.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
     private Order order;
     private List<PublisherTransaction> publisherTransactions;
+    private Context mContext;
 
     public OrderDetailAdapter(Order order) {
         this.order = order;
@@ -38,6 +41,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        mContext = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderdetail_item, parent, false);
         publisherTransactions = getPublisherTransaction(order.getOrderDetail());
         return new ViewHolder(view);
@@ -58,7 +62,8 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         holder.tvOrderDetailReceiverEmail.setText(receiver.getEmail());
         holder.tvOrderDetailReceiverPhone.setText(receiver.getPhone());
         holder.tvOrderDetailReceiverAddress.setText(receiver.getAddress());
-        holder.tvOrderDetailTotalContent.setText(order.getTotalMoney());
+        String total = CommonUtils.GetCurrencyFormat(order.getTotalMoney()) + " " + mContext.getString(R.string.currency_vnd);
+        holder.tvOrderDetailTotalContent.setText(total);
 
 
         OrderDetailPublisherAdapter adapter = new OrderDetailPublisherAdapter(publisherTransactions);

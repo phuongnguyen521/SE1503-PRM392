@@ -3,7 +3,12 @@ package com.example.se1503_ichinsan_bookapplication.ui.book;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,6 +37,7 @@ import com.example.se1503_ichinsan_bookapplication.utils.api.repository.CartItem
 import com.example.se1503_ichinsan_bookapplication.utils.api.repository.CartRepository;
 import com.example.se1503_ichinsan_bookapplication.utils.api.service.CartItemsService;
 import com.example.se1503_ichinsan_bookapplication.utils.api.service.CartService;
+import com.example.se1503_ichinsan_bookapplication.utils.channel.MyApplication;
 import com.example.se1503_ichinsan_bookapplication.utils.dto.UserPreferenceUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,10 +64,13 @@ public class BookDetailActivity extends AppCompatActivity {
     private Cart cart;
     private String previousPage;
     private String searchKeywords;
+    private User userProfile;
+    private FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
+        getSupportActionBar().hide();
         setData();
         setDataFromBookDetail();
     }
@@ -81,6 +90,8 @@ public class BookDetailActivity extends AppCompatActivity {
             previousPage = getString(R.string.title_home);
         }
         searchKeywords = intent.getStringExtra(getString(R.string.search_keyword));
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userProfile = UserPreferenceUtils.getFromPreferences(getString(R.string.PreferenceUserProfile), this.getApplicationContext(), User.class);
     }
 
     private void setDataFromBookDetail(){
@@ -103,10 +114,14 @@ public class BookDetailActivity extends AppCompatActivity {
             finish();
         });
         if (book != null){
-            btnAddToCart.setEnabled(book.getQuantity() > 0);
-            btnAddToCart.setOnClickListener(view -> {
-                addBookToCart();
-            });
+            boolean isSignedIn = CommonUtils.isSignedInYet(user, userProfile, getApplicationContext());
+            boolean result = isSignedIn && book.getQuantity() > 0;
+            btnAddToCart.setEnabled(result);
+            if (result){
+                btnAddToCart.setOnClickListener(view -> {
+                    addBookToCart();
+                });
+            }
             CommonUtils.returnRectangleAvatar(ivBookDetailImage, this.getApplicationContext(), book.getImage());
             tvBookDetailCategory.setText(book.getCategoryDto().getCategoryName());
             tvBookDetailBookName.setText(book.getName());
@@ -133,7 +148,7 @@ public class BookDetailActivity extends AppCompatActivity {
                         } else {
                             NewCartItem cartItem = new NewCartItem(
                                     cart.getID(),
-                                    book.getID(),
+                                    book.getId(),
                                     book.getImage(),
                                     String.valueOf(book.getQuantity()),
                                     String.valueOf(book.getPrice()),
@@ -188,7 +203,7 @@ public class BookDetailActivity extends AppCompatActivity {
         if (cart != null && !cart.getCartItems().isEmpty()){
             List<CartItem> cartItemList = cart.getCartItems();
             for(int number = 0; number < cartItemList.size(); number++){
-                if (cartItemList.get(number).getBookId().equals(book.getID())){
+                if (cartItemList.get(number).getBookId().equals(book.getId())){
                     result = number;
                     break;
                 }
@@ -199,24 +214,28 @@ public class BookDetailActivity extends AppCompatActivity {
 
     private void updateCartItem(CartItem cartItem){
         int quantity = Integer.valueOf(cartItem.getQuantity()) + 1;
-        cartItem.setQuantity(String.valueOf(quantity));
-        updateCartByUserId(cartItem, new CallBackData<CartItem, Response<CartItem>>() {
-            @Override
-            public void onGetMapData(Response<CartItem> response) {
-                if (response.isSuccessful() && response != null){
-                    sendMessage("Add Successfully");
-                    Log.d("Update Cart",String.valueOf(response.body()));
-                } else {
-                    sendMessage("Add Unsuccessfully");
-                    Log.d("Update Cart Failed",String.valueOf(response.body()));
+        if (quantity > book.getQuantity()){
+            Toast.makeText(BookDetailActivity.this, "You have booked all of this book", Toast.LENGTH_LONG).show();
+        } else {
+            cartItem.setQuantity(String.valueOf(quantity));
+            updateCartByUserId(cartItem, new CallBackData<CartItem, Response<CartItem>>() {
+                @Override
+                public void onGetMapData(Response<CartItem> response) {
+                    if (response.isSuccessful() && response != null){
+                        sendMessage("Add Successfully");
+                        Log.d("Update Cart",String.valueOf(response.body()));
+                    } else {
+                        sendMessage("Add Unsuccessfully");
+                        Log.d("Update Cart Failed",String.valueOf(response.body()));
+                    }
                 }
-            }
 
-            @Override
-            public void onError() {
+                @Override
+                public void onError() {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     private void updateCartByUserId(CartItem cartItem, CallBackData getCallBackData){
@@ -254,6 +273,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response != null){
                     sendMessage("Add Successfully");
                     Log.d("Add Cart",String.valueOf(response.body()));
+                    addNotification();
                 } else {
                     sendMessage("Add Unsuccessfully");
                     Log.d("Add Cart Failed",String.valueOf(response.body()));
@@ -265,6 +285,34 @@ public class BookDetailActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void addNotification(){
+        // Create an Intent for the activity you want to start
+        Intent resultIntent = new Intent(this, CartActivity.class);
+        resultIntent.putExtra(getString(R.string.previousActivity), getString(R.string.bookDetailActivity));
+        resultIntent.putExtra(getString(R.string.getBookDetail), (Serializable) book);
+        // Create the TaskStackBuilder and add the intent, which inflates the back stack
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resultIntent);
+        // Get the PendingIntent containing the entire back stack
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(CommonUtils.getNotifcationId(),
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        Notification noti = new NotificationCompat.Builder(this, MyApplication.CHANNEL_ID)
+                .setSmallIcon(R.drawable.prm_logo) //set icon for notification
+                .setContentTitle("Add a new book") //set title of notification
+                .setContentText("You have added " + book.getName() + " into your cart")//this is notification message
+                .setContentIntent(resultPendingIntent)
+                .setAutoCancel(true) // makes auto cancel of notification
+                .build();
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (manager != null){
+            manager.notify(0, noti);
+        }
     }
 
     private void addNewCartItem(NewCartItem cartItem, CallBackData<NewCartItem, Response<NewCartItem>> getCallBackData){

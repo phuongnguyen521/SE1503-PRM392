@@ -53,6 +53,7 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        getSupportActionBar().hide();
         setData();
         boolean isSignedIn = CommonUtils.isSignedInYet(user, userProfile, this.getApplicationContext());
         btnPurchase.setEnabled(isSignedIn);
@@ -63,7 +64,7 @@ public class CartActivity extends AppCompatActivity {
             if (cartAdapter != null){
                 List<CartItem> cartItemList = cartAdapter.getSelectedCartItemList();
                 if (cartItemList.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Pleaes choose at least one book!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please choose at least one book!", Toast.LENGTH_LONG).show();
                 } else {
                     Intent intent = new Intent(CartActivity.this, ReceiverPreviewActivity.class);
                     previewOrderDto.setCartItemList(cartItemList);

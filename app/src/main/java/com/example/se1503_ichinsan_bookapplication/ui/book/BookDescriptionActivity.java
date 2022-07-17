@@ -25,6 +25,7 @@ public class BookDescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_description);
+        getSupportActionBar().hide();
         setData();
         setDataFromBookDetail();
     }

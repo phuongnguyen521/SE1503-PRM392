@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivTransactionBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="37dp"
+        android:layout_height="33dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="18dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/tvTransaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:text="@string/title_transaction"
         android:textColor="@color/black"

@@ -86,9 +86,6 @@ public class Book implements Serializable {
     public CategoryDto getCategoryDto() { return categoryDto; }
     public void setCategoryDto(CategoryDto value) { this.categoryDto = value; }
 
-    public String getID() { return id; }
-    public void setID(String value) { this.id = value; }
-
     public String getName() { return name; }
     public void setName(String value) { this.name = value; }
 

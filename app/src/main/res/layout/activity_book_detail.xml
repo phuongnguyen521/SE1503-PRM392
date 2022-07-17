@@ -108,9 +108,11 @@
 
     <Button
         android:id="@+id/btnAddToCart"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="67dp"
+        android:backgroundTint="@color/button_book_detail_color"
         android:text="@string/book_add_to_cart"
+        android:textColor="@color/edittext_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

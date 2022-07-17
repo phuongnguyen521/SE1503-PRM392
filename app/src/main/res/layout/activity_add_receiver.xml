@@ -13,10 +13,12 @@
         android:layout_height="48dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="14dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmailReceiverAdd" />
 
@@ -39,10 +41,12 @@
         android:layout_height="48dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="14dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="@string/phone_number"
         android:inputType="number"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneReceiverAdd" />
 
@@ -65,10 +69,12 @@
         android:layout_height="48dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="14dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="@string/address"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAddressReceiverAdd" />
 
@@ -127,20 +133,24 @@
         android:layout_height="48dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="14dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFullNameReceiverAdd" />
 
     <Button
         android:id="@+id/btnEditReceiverAdd"
+        android:backgroundTint="@color/button_colors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
         android:layout_marginTop="20dp"
         android:text="@string/add"
+        android:textColor="@color/edittext_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailReceiverAdd" />
 

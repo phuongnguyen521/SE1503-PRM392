@@ -2,9 +2,15 @@ package com.example.se1503_ichinsan_bookapplication.ui.order;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,10 +28,13 @@ import com.example.se1503_ichinsan_bookapplication.dto.OrderDetail;
 import com.example.se1503_ichinsan_bookapplication.dto.PreviewOrderDto;
 import com.example.se1503_ichinsan_bookapplication.dto.User;
 import com.example.se1503_ichinsan_bookapplication.ui.adapter.OrderDetailAdapter;
+import com.example.se1503_ichinsan_bookapplication.ui.cart.CartActivity;
 import com.example.se1503_ichinsan_bookapplication.ui.user.transaction.TransactionActivity;
 import com.example.se1503_ichinsan_bookapplication.utils.CallBackData;
+import com.example.se1503_ichinsan_bookapplication.utils.CommonUtils;
 import com.example.se1503_ichinsan_bookapplication.utils.api.repository.OrderRepository;
 import com.example.se1503_ichinsan_bookapplication.utils.api.service.OrderService;
+import com.example.se1503_ichinsan_bookapplication.utils.channel.MyApplication;
 import com.example.se1503_ichinsan_bookapplication.utils.dto.UserPreferenceUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,6 +67,7 @@ public class OrderDetailPreviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail_preview);
+        getSupportActionBar().hide();
         setData();
         setAdapter();
         btnCheckOut.setOnClickListener(view -> {
@@ -66,6 +76,7 @@ public class OrderDetailPreviewActivity extends AppCompatActivity {
                 public void onGetMapData(Response<Order> response) {
                     if (response.isSuccessful() && response != null){
                         Toast.makeText(getApplicationContext(), "Create Order Successfully", Toast.LENGTH_LONG).show();
+                        addNotification();
                         Intent intent = new Intent(OrderDetailPreviewActivity.this, MainActivity.class);
                         intent.putExtra(getString(R.string.getSpecificFragment), getString(R.string.title_home));
                         startActivity(intent);
@@ -168,6 +179,32 @@ public class OrderDetailPreviewActivity extends AppCompatActivity {
             });
         } catch (Exception e){
             Log.d("Create Order", e.getMessage());
+        }
+    }
+
+    private void addNotification(){
+        // Create an Intent for the activity you want to start
+        Intent resultIntent = new Intent(this, TransactionActivity.class);
+        // Create the TaskStackBuilder and add the intent, which inflates the back stack
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resultIntent);
+        // Get the PendingIntent containing the entire back stack
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(CommonUtils.getNotifcationId(),
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        Notification noti = new NotificationCompat.Builder(this, MyApplication.CHANNEL_ID)
+                .setSmallIcon(R.drawable.prm_logo) //set icon for notification
+                .setContentTitle("Create order successfully") //set title of notification
+                .setContentText("Your new order with " + order.getOrderDetail().getBookDetails().size() + " successfully!")//this is notification message
+                .setContentIntent(resultPendingIntent)
+                .setAutoCancel(true) // makes auto cancel of notification
+                .build();
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (manager != null){
+            manager.notify(0, noti);
         }
     }
 }

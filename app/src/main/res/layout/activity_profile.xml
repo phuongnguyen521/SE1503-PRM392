@@ -36,6 +36,8 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:text="@string/edit"
+        android:backgroundTint="@color/button_colors"
+        android:textColor="@color/edittext_text_color"
         app:layout_constraintStart_toEndOf="@+id/tvProfile"
         app:layout_constraintTop_toTopOf="parent" />
 

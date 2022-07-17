@@ -52,12 +52,14 @@
         android:id="@+id/etSearch"
         android:layout_width="263dp"
         android:layout_height="48dp"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="@string/label_search"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -65,9 +67,11 @@
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:backgroundTint="@color/button_colors"
         android:text="@string/label_search"
+        android:textColor="@color/edittext_text_color"
         app:layout_constraintStart_toEndOf="@+id/etSearch"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 

@@ -31,7 +31,6 @@ android {
         viewBinding true
     }
 }
-
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.4.2'
@@ -56,5 +55,4 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation 'com.google.code.gson:gson:2.9.0'
-
 }

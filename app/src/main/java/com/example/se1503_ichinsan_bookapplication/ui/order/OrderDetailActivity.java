@@ -22,7 +22,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
-
+        getSupportActionBar().hide();
         setData();
 
         ivOrderDetailBack.setOnClickListener(view -> {

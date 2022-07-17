@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SE1503_Ichinsan_BookApplication</string>
+    <string name="app_name">Ichinsan</string>
     <string name="title_home">Home</string>
     <string name="search_page">Search</string>
     <string name="title_cart">Your Cart</string>

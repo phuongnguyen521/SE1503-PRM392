@@ -2,12 +2,16 @@ package com.example.se1503_ichinsan_bookapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.se1503_ichinsan_bookapplication.ui.home.HomeFragment;
 import com.example.se1503_ichinsan_bookapplication.ui.user.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getSupportActionBar().hide();
         Intent intent = new Intent(this, HomeFragment.class);
 
         navView = findViewById(R.id.nav_view);
@@ -48,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         String data = i.getStringExtra(getString(R.string.getSpecificFragment));
 
         if (data != null) {
-            Fragment fragment = data.contentEquals(getString(R.string.title_home)) ? new HomeFragment() : new UserFragment();
-            int index = data.contentEquals(getString(R.string.title_home)) ? R.id.navigation_home : R.id.navigation_user;
+            Fragment fragment = data.contentEquals(getString(R.string.title_user)) ? new UserFragment() : new HomeFragment();
+            int index = data.contentEquals(getString(R.string.title_user)) ? R.id.navigation_user : R.id.navigation_home;
             setFragment(fragment);
             navView.setSelectedItemId(index);
         }

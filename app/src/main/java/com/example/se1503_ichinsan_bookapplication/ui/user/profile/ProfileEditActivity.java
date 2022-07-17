@@ -40,7 +40,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
-
+        getSupportActionBar().hide();
         setData();
         ivEditProfileBack.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileEditActivity.this, ProfileActivity.class);

@@ -21,35 +21,49 @@
         android:id="@+id/etSearchBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="@string/book_name"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/ivSearchBack"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:minHeight="48dp"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSearchBack" />
 
     <Button
         android:id="@+id/btnSearchBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="@color/button_colors"
         android:text="@string/label_search"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/edittext_text_color"
         app:layout_constraintStart_toEndOf="@+id/etSearchBar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchBookList"
-        android:layout_width="409dp"
-        android:layout_height="666dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="616dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSearchBook" />
+        app:layout_constraintTop_toBottomOf="@+id/etSearchBar" />
+
+    <TextView
+        android:id="@+id/tvSearchTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="23dp"
+        android:text="Search Book"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/ivSearchBack"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

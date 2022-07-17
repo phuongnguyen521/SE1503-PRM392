@@ -1,5 +1,6 @@
 package com.example.se1503_ichinsan_bookapplication.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import com.example.se1503_ichinsan_bookapplication.dto.User;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.text.DecimalFormat;
+import java.util.Date;
 
 public class CommonUtils {
     public static void returnCircleAvatar(ImageView imageView, Context context, String urlImage){
@@ -42,5 +44,9 @@ public class CommonUtils {
     public static String GetCurrencyFormat(String amount){
         DecimalFormat formatter = new DecimalFormat("###,###,###");
         return formatter.format(Double.parseDouble(amount));
+    }
+
+    public static int getNotifcationId(){
+        return (int) new Date().getTime();
     }
 }

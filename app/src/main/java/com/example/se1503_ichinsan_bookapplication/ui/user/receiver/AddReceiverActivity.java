@@ -48,6 +48,7 @@ public class AddReceiverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_receiver);
+        getSupportActionBar().hide();
         setData();
         boolean isEnabled = CommonUtils.isSignedInYet(user, userProfile, this);
         if (isEnabled){

@@ -36,6 +36,8 @@
         android:layout_marginStart="161dp"
         android:layout_marginTop="37dp"
         android:text="@string/save"
+        android:textColor="@color/edittext_text_color"
+        android:backgroundTint="@color/button_colors"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAddressEditProfile" />
 
@@ -48,7 +50,9 @@
         android:ems="10"
         android:hint="@string/phone_number"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneEditProfile" />
 
@@ -87,7 +91,9 @@
         android:ems="10"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNameEditProfile" />
 
@@ -114,7 +120,9 @@
         android:hint="@string/address"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColor="@color/black"
+        android:textColor="@color/button_text_color"
+        android:textColorHint="@color/button_text_color"
+        android:background="@drawable/edittext_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAddressEditProfile" />
 

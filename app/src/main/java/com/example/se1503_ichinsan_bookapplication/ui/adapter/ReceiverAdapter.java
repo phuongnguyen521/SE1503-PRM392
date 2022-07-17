@@ -50,7 +50,7 @@ public class ReceiverAdapter extends RecyclerView.Adapter<ReceiverAdapter.ViewHo
 
         if (isPreview) {
             holder.constraintReceiverItem.setOnClickListener(view -> {
-                holder.constraintReceiverItem.setBackgroundColor(Color.GREEN);
+                holder.constraintReceiverItem.setBackgroundColor(Color.parseColor("#A402ABF8"));
                 this.selectedReceiver = receiverDetail;
             });
         } else {

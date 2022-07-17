@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +44,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_book_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_book_item_1, parent, false);
         return new ViewHolder(view);
     }
 
@@ -51,14 +52,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Book book = bookList.get(position);
 
-        CommonUtils.returnRectangleAvatar(holder.ivBookImage, mcontext, book.getImage());
-        holder.tvBookName.setText(book.getName());
-        holder.tvBookStatus.setText(book.getStatus());
-        holder.tvBookStatus.setTextColor(book.getStatus().equals("In Stock") ? Color.GREEN : Color.RED);
+        CommonUtils.returnRectangleAvatar(holder.ivBookImage1, mcontext, book.getImage());
+        holder.tvBookName1.setText(book.getName());
+        holder.tvBookStatus1.setText(book.getStatus());
+        holder.tvBookStatus1.setTextColor(book.getStatus().equals("In Stock") ? Color.GREEN : Color.RED);
         String price = CommonUtils.GetCurrencyFormat(String.valueOf(book.getPrice())) + " " + mcontext.getString(R.string.currency_vnd);
-        holder.tvBookPrice.setText(price);
+        holder.tvBookPrice1.setText(price);
 
-        holder.constraintBookItem.setOnClickListener(view -> {
+        holder.bookCardItem.setOnClickListener(view -> {
             boolean isHome = previousPage.equals(mcontext.getString(R.string.title_home));
             Intent intent = new Intent(mcontext, BookDetailActivity.class);
             intent.putExtra(mcontext.getString(R.string.getBookDetail), (Serializable) book);
@@ -81,18 +82,20 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView ivBookImage;
-        TextView tvBookStatus;
-        TextView tvBookName;
-        TextView tvBookPrice;
-        ConstraintLayout constraintBookItem;
+        ImageView ivBookImage1;
+        TextView tvBookStatus1;
+        TextView tvBookName1;
+        TextView tvBookPrice1;
+        CardView bookCardItem;
+        //ConstraintLayout constraintBookItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivBookImage = itemView.findViewById(R.id.ivBookImage);
-            tvBookStatus = itemView.findViewById(R.id.tvBookStatus);
-            tvBookName = itemView.findViewById(R.id.tvBookName);
-            tvBookPrice = itemView.findViewById(R.id.tvBookPrice);
-            constraintBookItem = itemView.findViewById(R.id.constraintBookItem);
+            ivBookImage1 = itemView.findViewById(R.id.ivBookImage1);
+            tvBookStatus1 = itemView.findViewById(R.id.tvBookStatus1);
+            tvBookName1 = itemView.findViewById(R.id.tvBookName1);
+            tvBookPrice1 = itemView.findViewById(R.id.tvBookPrice1);
+            bookCardItem = itemView.findViewById(R.id.bookCardItem);
+            //constraintBookItem = itemView.findViewById(R.id.constraintBookItem);
         }
     }
 }

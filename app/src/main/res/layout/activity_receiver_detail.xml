@@ -102,6 +102,8 @@
         android:layout_marginStart="103dp"
         android:layout_marginTop="54dp"
         android:text="@string/edit"
+        android:textColor="@color/edittext_text_color"
+        android:backgroundTint="@color/button_colors"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvReceiverEmail" />
 
@@ -112,6 +114,8 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="52dp"
         android:text="@string/delete"
+        android:textColor="@color/edittext_text_color"
+        android:backgroundTint="@color/button_colors"
         app:layout_constraintStart_toEndOf="@+id/btnEditReceiverDetail"
         app:layout_constraintTop_toBottomOf="@+id/tvReceiverEmail" />
 </androidx.constraintlayout.widget.ConstraintLayout>
